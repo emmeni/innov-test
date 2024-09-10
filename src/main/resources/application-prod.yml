@@ -1,0 +1,77 @@
+
+server:
+    port: 8081
+    http2:
+        enabled: false
+    servlet:
+        context-path: '/'
+        
+spring:
+    application:
+        name: 'innov'
+    profiles:
+        active: prod
+    jackson:
+        serialization:
+            indent-output: true
+    datasource:
+        url: jdbc:postgresql://localhost:5432/dbinnov
+        type: com.zaxxer.hikari.HikariDataSource
+        driverClassName: org.postgresql.Driver
+        username: innov
+        password: 
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        hibernate:
+            ddl-auto: validate
+            # possible values: validate | update | create | create-drop
+        generate-ddl: false
+        show-sql: false
+    servlet:
+        multipart:
+            enabled: true
+            file-size-threshold: 2KB
+            max-file-size: 200MB
+            max-request-size: 215MB
+            
+innov:
+    security:
+        authentication:
+            jwt:
+                secret: konqueroristhekingofmyvillage2006whichcompressall2015hiswifeoasisand2016letthemdoingthembesttofinalize2020
+                # Token is valid 24 hours
+                tokenValidityInSeconds: 86400
+                # Token remember is valid 30 jours
+                tokenValidityInSecondsForRememberMe: 2592000
+    swagger:
+        title: 'Innov services API'
+        description: Innov services API documentation
+        version: 1.0
+        termsOfServiceUrl:
+        contactName:
+        contactUrl:
+        contactEmail:
+        license:
+        licenseUrl:
+        openapi:
+            url: http://localhost:8081  
+    cors: #By default CORS are not enabled. Uncomment to enable.
+        allowed-origins: "*"
+        allowed-methods: GET, PUT, POST, DELETE, OPTIONS
+        allowed-headers: "*"
+        exposed-headers:
+        allow-credentials: true
+        max-age: 1800
+            
+springdoc:
+    # enable-native-support: true
+    swagger-ui:
+        path: /swagger-ui.html
+        enabled: true
+    api-docs:
+        path: /v3/api-docs
+    # show-actuator: true
+        
+token:
+  signing:
+    key: 413F4428472B4B6250655368566D5970337336763979244226452948404D635155368566D597033733676397
